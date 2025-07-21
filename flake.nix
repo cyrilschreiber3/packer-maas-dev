@@ -61,6 +61,7 @@
                   --device=/dev/fuse \
                   --cap-add=SYS_ADMIN \
                   --group-add=$(getent group kvm | cut -d: -f3) \
+                  --pull=always \
                 $distro:$tag
               '')
             ];
