@@ -1,0 +1,3 @@
+[submodule "packer-maas"]
+	path = packer-maas
+	url = https://github.com/cyrilschreiber3/packer-maas
