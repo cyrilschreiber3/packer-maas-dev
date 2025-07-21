@@ -47,7 +47,8 @@
                 fi
 
                 docker run --rm -it \
-                  -v $(pwd):/workspace \
+                  -v $(pwd)/packer-maas:/workspace \
+                  -v $(pwd)/ISOs:/iso \
                   -w /workspace \
                   --hostname packer-maas-dev \
                   --entrypoint bash \
