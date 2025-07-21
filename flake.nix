@@ -54,6 +54,7 @@
                   -v $(pwd)/packer-maas:/workspace \
                   -v $(pwd)/ISOs:/iso \
                   -w /workspace \
+                  --name packer-maas-dev \
                   --hostname packer-maas-dev \
                   --entrypoint bash \
                   --device=/dev/kvm \
