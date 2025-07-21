@@ -36,7 +36,7 @@
                 distro="$1"
                 tag="$2"
                 if [[ $# -ne 1 ]]; then
-                  distro="cyrilschreiber3/packer-maas-dev"
+                  distro="ghcr.io/cyrilschreiber3/packer-maas-dev"
                 fi
                 if [[ $# -ne 2 ]]; then
                   tag="latest"
@@ -46,6 +46,8 @@
                   echo "Building local Docker image..."
                   docker build -t local/packer-maas-dev:$tag .
                   distro="local/packer-maas-dev"
+                else
+                  echo "Using Docker image: $distro:$tag"
                 fi
 
                 docker run --rm -it \
