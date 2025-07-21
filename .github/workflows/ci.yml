@@ -9,7 +9,8 @@ on:
     paths:
       - "Dockerfile"
       - ".github/workflows/ci.yml"
-
+  schedule:
+    - cron: "0 0 1,15 * *" # Every 1st and 15th of the month at midnight
   workflow_dispatch:
 
 jobs:
