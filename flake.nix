@@ -27,6 +27,8 @@
 
               alejandra # For formatting nix files
 
+              pykickstart # For generating kickstart files
+
               # Helper functions
               (writeShellScriptBin "packer-build" ''
                 #!/usr/bin/env bash
