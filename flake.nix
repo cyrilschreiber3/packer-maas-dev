@@ -54,6 +54,8 @@
                 docker run --rm -it \
                   -v $(pwd)/packer-maas:/workspace \
                   -v $(pwd)/ISOs:/iso \
+                  -v $(pwd)/.docker_history:/root/.bash_history \
+                  -e PROMPT_COMMAND='history -a' \
                   -w /workspace \
                   --name packer-maas-dev \
                   --hostname packer-maas-dev \
