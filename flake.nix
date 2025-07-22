@@ -69,7 +69,8 @@
               '')
 
               (writeShellScriptBin "maas-push" ''
-                #!/usr/bin/env bash
+                #!/usr/bin/env nix-shell
+                #!nix-shell -i bash -p ondir
 
                 image="$1"
                 if [[ $# -ne 1 ]]; then
@@ -126,13 +127,18 @@
 
                 echo "Done."
 
-                echo "Run 'make clean' to remove the image file from the local machine ? [Y/n]: "
-                read -r answer
-                if [[ -z "$answer" || "$answer" =~ ^[Yy]$ ]]; then
+                read -p "Run 'make clean' to remove the image file from the local machine ? [Y/n]: " answer
+                case "$answer" in
+                  [Yy]* ) answer="Y" ;;
+                  [Nn]* ) echo "Image file retained."; break;;
+                  * ) answer="Y" ;;
+                esac
+
+                if [[ "$answer" == "Y" ]]; then
+                  pushd $(dirname "$image") > /dev/null
                   make clean
+                  popd > /dev/null
                   echo "Image file removed."
-                else
-                  echo "Image file retained."
                 fi
               '')
             ];
